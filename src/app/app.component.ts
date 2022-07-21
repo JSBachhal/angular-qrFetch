@@ -7,9 +7,9 @@ import { saveAs } from 'file-saver';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  private scannerEnabled: boolean = true;
-  private transports: Transport[] = [];
-  private information: string;
+  scannerEnabled: boolean = true;
+  transports: [] = [];
+  information: string;
 
   constructor(private cd: ChangeDetectorRef) {}
 
@@ -38,7 +38,7 @@ export class AppComponent {
       'No se ha detectado información de ningún código. Acerque un código QR para escanear.';
   }
 
-  private saveFile(response) {
+  saveFile() {
     const blob = new Blob([JSON.stringify(this.data)], { type: 'text/plain' });
     saveAs(blob, 'data.txt');
   }
@@ -47,13 +47,24 @@ export class AppComponent {
   previewFile(event) {
     const reader = new FileReader();
     reader.onload = (e: any) => {
-      // const data = JSON.parse(reader.result.toString());
-      const data = reader.result.toString();
+      const data = JSON.parse(reader.result.toString());
+      // const data = reader.result.toString();
       this.fileDatakeys = Object.keys(data).length;
-      alert(this.fileDatakeys);
+      // alert(this.fileDatakeys);
       console.log(data);
       this.data = data;
     };
     reader.readAsBinaryString(event.target.files[0]);
+  }
+
+  getmaxKey(data) {
+    let max = 0;
+    for (let i in Object.keys(data)) {
+      if (parseInt(i) > max) {
+        max = parseInt(i);
+      }
+    }
+    console.log(max);
+    return max;
   }
 }
