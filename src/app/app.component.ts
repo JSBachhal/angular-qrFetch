@@ -44,16 +44,16 @@ export class AppComponent {
   }
 
   fileDatakeys = 0;
-  public previewImage(event) {
+  previewFile(event) {
     const reader = new FileReader();
     reader.onload = (e: any) => {
-
-      alert(e) 
-      const data = JSON.parse(reader.result.toString());
+      // const data = JSON.parse(reader.result.toString());
+      const data = reader.result.toString();
       this.fileDatakeys = Object.keys(data).length;
       alert(this.fileDatakeys);
+      console.log(data);
       this.data = data;
     };
-    reader.readAsText(event.target.files[0]);
+    reader.readAsBinaryString(event.target.files[0]);
   }
 }
