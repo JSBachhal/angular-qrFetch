@@ -70,7 +70,7 @@ export class AppComponent {
   }
 
   createBuffer(data, maxkey) {
-    const buffer = new ArrayBuffer(83088);
+    const buffer = new ArrayBuffer(332352);
     const view = new Int32Array(buffer);
 
     let arr = [];
