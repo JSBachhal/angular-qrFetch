@@ -77,9 +77,12 @@ export class AppComponent {
     for (let i = 0; i <= maxkey; i++) {
       if (data[i]) {
         // console.log(data[i]);
-        arr = [...arr, ...data[i.toString()].split(',')];
+        data[i.toString()].split(',').forEach(v=>{
+          arr.push(parseFloat(v));
+        });
       }
     }
+    // const _array = arr.split(',')
 
     const buf = Uint32Array.from(arr);
 
