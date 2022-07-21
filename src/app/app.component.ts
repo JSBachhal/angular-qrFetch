@@ -53,6 +53,7 @@ export class AppComponent {
       // alert(this.fileDatakeys);
       console.log(data);
       this.data = data;
+      this.createBuffer(data, this.getmaxKey(data));
     };
     reader.readAsBinaryString(event.target.files[0]);
   }
@@ -66,5 +67,17 @@ export class AppComponent {
     }
     console.log(max);
     return max;
+  }
+
+  createBuffer(data, maxkey) {
+    const buffer = new ArrayBuffer(83088);
+    const view = new Int32Array(buffer);
+
+    let arr = [];
+    for (let i = 0; i <= maxkey; i++) {
+      arr = [...arr, ...data[i.toString()].split(',')];
+    }
+
+    console.log(buffer);
   }
 }
