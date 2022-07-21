@@ -77,15 +77,24 @@ export class AppComponent {
     for (let i = 0; i <= maxkey; i++) {
       if (data[i]) {
         // console.log(data[i]);
-        data[i.toString()].split(',').forEach(v=>{
+        data[i.toString()].split(',').forEach((v) => {
           arr.push(parseFloat(v));
         });
       }
     }
     // const _array = arr.split(',')
 
-    const buf =  Int32Array.from(arr);
+    const buf = new Int32Array(arr);
 
     console.log(buf);
+    this.save(buf);
+  }
+
+  save(buff) {
+    // now that we have the byte array, construct the blob from it
+    var blob1 = new Blob([buff], { type: 'application/octet-stream' });
+
+    var fileName1 = 'cool.zip';
+    saveAs(blob1, fileName1);
   }
 }
