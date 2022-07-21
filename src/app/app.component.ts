@@ -84,7 +84,7 @@ export class AppComponent {
     }
     // const _array = arr.split(',')
 
-    const buf = Uint32Array.from(arr);
+    const buf =  Int32Array.from(arr);
 
     console.log(buf);
   }
