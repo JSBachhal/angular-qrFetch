@@ -75,7 +75,9 @@ export class AppComponent {
 
     let arr = [];
     for (let i = 0; i <= maxkey; i++) {
-      arr = [...arr, ...data[i.toString()].split(',')];
+      if (data[i]) {
+        arr = [...arr, ...data[i.toString()].d.split(',')];
+      }
     }
 
     console.log(buffer);
