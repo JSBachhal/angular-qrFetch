@@ -11,9 +11,9 @@ export class AppComponent {
   transports: [] = [];
   information: string;
 
-  constructor(private cd: ChangeDetectorRef) {}
+  constructor(private cd: ChangeDetectorRef) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   data = {};
 
@@ -30,12 +30,12 @@ export class AppComponent {
     }
   }
 
-  doneindexList() {}
+  doneindexList() { }
 
   public enableScanner() {
     this.scannerEnabled = !this.scannerEnabled;
     this.information =
-      'No se ha detectado información de ningún código. Acerque un código QR para escanear.';
+      '';
   }
 
   saveFile() {
@@ -51,8 +51,10 @@ export class AppComponent {
       // const data = reader.result.toString();
       this.fileDatakeys = Object.keys(data).length;
       // alert(this.fileDatakeys);
-      console.log(data);
+      // console.log(data);
       this.data = data;
+      this.indexdone = Object.keys(data).length;
+      // console.log(this.data);
       this.createBuffer(data, this.getmaxKey(data));
     };
     reader.readAsBinaryString(event.target.files[0]);
@@ -67,6 +69,19 @@ export class AppComponent {
     }
     console.log(max);
     return max;
+  }
+
+  showMissingKeys() {
+    let missingkeys = '';
+    let maxKey = this.getmaxKey(this.data);
+    for (let i = 0; i <= maxKey; i++) {
+      if (!this.data[i]) {
+        missingkeys += i + ' , '
+      }
+
+      alert(missingkeys);
+
+    }
   }
 
   createBuffer(data, maxkey) {
@@ -87,7 +102,7 @@ export class AppComponent {
     const buf = new Int32Array(arr);
 
     console.log(buf);
-    this.save(buf);
+    // this.save(buf);
   }
 
   save(buff) {
