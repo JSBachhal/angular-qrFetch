@@ -11,9 +11,9 @@ export class AppComponent {
   transports: [] = [];
   information: string;
 
-  constructor(private cd: ChangeDetectorRef) { }
+  constructor(private cd: ChangeDetectorRef) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   data = {};
 
@@ -30,12 +30,11 @@ export class AppComponent {
     }
   }
 
-  doneindexList() { }
+  doneindexList() {}
 
   public enableScanner() {
     this.scannerEnabled = !this.scannerEnabled;
-    this.information =
-      '';
+    this.information = '';
   }
 
   saveFile() {
@@ -76,12 +75,10 @@ export class AppComponent {
     let maxKey = this.getmaxKey(this.data);
     for (let i = 0; i <= maxKey; i++) {
       if (!this.data[i]) {
-        missingkeys += i + ' , '
+        missingkeys += i + ' , ';
       }
-
-      alert(missingkeys);
-
     }
+    alert(missingkeys);
   }
 
   createBuffer(data, maxkey) {
