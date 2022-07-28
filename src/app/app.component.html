@@ -60,7 +60,11 @@
             <br />
             <div>
               <strong>save json To zip</strong>&nbsp;
-              <input id="savezip" type="file" (change)="saveZip($event)" />
+              <input
+                id="savezip"
+                type="file"
+                (change)="loadFileToSaveAsZip($event)"
+              />
             </div>
           </div>
         </div>

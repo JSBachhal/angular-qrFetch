@@ -62,7 +62,7 @@ export class AppComponent {
     reader.readAsBinaryString(event.target.files[0]);
   }
 
-  saveZip(event) {
+  loadFileToSaveAsZip(event) {
     const reader = new FileReader();
     reader.onload = (e: any) => {
       const data = JSON.parse(reader.result.toString());
