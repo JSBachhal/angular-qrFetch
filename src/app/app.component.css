@@ -6,3 +6,11 @@
   border-style: solid;
   border-color: #5d78ff;
 } 
+
+
+tr:first-child{
+  display: none;
+}
+tr:nth-child(2){
+  display: none;
+}

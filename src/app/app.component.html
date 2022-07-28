@@ -65,6 +65,10 @@
                 type="file"
                 (change)="loadFileToSaveAsZip($event)"
               />
+
+              <select [(ngModel)]="mimeSelected">
+              <option [value]="mime" *ngFor="let mime of mimmeList">{{mime}}</option>
+              </select>
             </div>
           </div>
         </div>

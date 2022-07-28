@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { saveAs } from 'file-saver';
+import { mimmeList } from './mime';
 
 @Component({
   selector: 'my-app',
@@ -10,7 +11,8 @@ export class AppComponent {
   scannerEnabled: boolean = true;
   transports: [] = [];
   information: string;
-
+  mimmeList=mimmeList;
+  mimeSelected= 'application/x-7z-compressed'
   constructor(private cd: ChangeDetectorRef) {}
 
   ngOnInit() {}
@@ -43,7 +45,7 @@ export class AppComponent {
   }
 
   saveZipFile(buffer) {
-    const blob = new Blob([buffer], { type: 'application/x-7z-compressed' });
+    const blob = new Blob([buffer], { type: this.mimeSelected});
     saveAs(blob, 'data.7z');
   }
 
@@ -116,10 +118,5 @@ export class AppComponent {
     console.log(buf);
   }
 
-  save(buff) {
-    var blob1 = new Blob([buff], { type: 'application/octet-stream' });
-
-    var fileName1 = 'cool.zip';
-    saveAs(blob1, fileName1);
-  }
+  
 }
