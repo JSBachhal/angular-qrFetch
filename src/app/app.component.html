@@ -59,16 +59,22 @@
             </div>
             <br />
             <div>
-              <strong>save json To zip</strong>&nbsp;
-              <input
-                id="savezip"
-                type="file"
-                (change)="loadFileToSaveAsZip($event)"
-              />
-
-              <select [(ngModel)]="mimeSelected">
-              <option [value]="mime" *ngFor="let mime of mimmeList">{{mime}}</option>
-              </select>
+              <div>
+                <strong>save json To zip</strong>&nbsp;
+                <input
+                  id="savezip"
+                  type="file"
+                  (change)="loadFileToSaveAsZip($event)"
+                />
+              </div>
+              <br />
+              <div>
+                <select [(ngModel)]="mimeSelected">
+                  <option [value]="mime" *ngFor="let mime of mimmeList">
+                    {{ mime }}
+                  </option>
+                </select>
+              </div>
             </div>
           </div>
         </div>

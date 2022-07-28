@@ -14,3 +14,7 @@ tr:first-child{
 tr:nth-child(2){
   display: none;
 }
+
+.dfx{
+  display: flex;
+}
