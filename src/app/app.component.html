@@ -44,6 +44,7 @@
               <span> file keys {{fileDatakeys}} </span>
               <button  (click)="showMissingKeys()" style="margin-top:10px">Show Missing Keys</button>
             </div>
+            <input id="savezip" type="file" (change)="saveZip($event)" />
             <div class="alert alert-primary fade show" role="alert" *ngFor="let item of transports; let i = index">
               <div class="alert-icon"><i class="flaticon-truck"></i></div>
 

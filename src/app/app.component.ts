@@ -41,6 +41,15 @@ export class AppComponent {
     const blob = new Blob([JSON.stringify(this.data)], { type: 'text/plain' });
     saveAs(blob, 'data.txt');
   }
+  
+  saveZipFile(buffer) {
+    const blob = new Blob([buffer], 
+    { type: 'application/x-7z-compressed' });
+    saveAs(blob, 'data.7z');
+  }
+
+
+  
 
   fileDatakeys = 0;
   previewFile(event) {
@@ -57,6 +66,22 @@ export class AppComponent {
       this.createBuffer(data, this.getmaxKey(data));
     };
     reader.readAsBinaryString(event.target.files[0]);
+  }
+  
+  saveZip(event) {
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      const data = JSON.parse(reader.result.toString());
+      
+      let str = '' 
+      for(let v of data){
+        str += v.d;
+      }
+      
+      const buffer = new Uint8Array(str.split(',') as any);
+      this.saveZipFile(buffer);
+    };
+    reader.readAsText(event.target.files[0]);
   }
 
   getmaxKey(data) {
@@ -94,12 +119,8 @@ export class AppComponent {
         });
       }
     }
-    // const _array = arr.split(',')
-
     const buf = new Int32Array(arr);
-
     console.log(buf);
-    // this.save(buf);
   }
 
   save(buff) {
