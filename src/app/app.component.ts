@@ -74,8 +74,6 @@ export class AppComponent {
         str += data[v];
       }
 
-      // console.log(str);
-      // console.log(str.split(',').length);
       const buffer = new Uint8Array(str.split(',') as any);
       console.log(buffer.length);
       this.saveZipFile(buffer);
@@ -123,7 +121,6 @@ export class AppComponent {
   }
 
   save(buff) {
-    // now that we have the byte array, construct the blob from it
     var blob1 = new Blob([buff], { type: 'application/octet-stream' });
 
     var fileName1 = 'cool.zip';
