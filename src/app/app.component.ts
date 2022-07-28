@@ -21,7 +21,7 @@ export class AppComponent {
 
   public scanSuccessHandler($event: any) {
     const data = JSON.parse($event);
-    if (data && data.i) {
+    if (data && data.i>-1) {
       if (this.data[data.i]) {
         return;
       }
