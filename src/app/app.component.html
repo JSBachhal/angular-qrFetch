@@ -6,11 +6,15 @@
           <span class="kt-portlet__head-icon kt-hide">
             <i class="la la-gear"></i>
           </span>
-          <h3 class="kt-portlet__head-title">Acerca el código QR</h3>
+          <h3 class="kt-portlet__head-title">QR</h3>
         </div>
       </div>
       <div class="kt-portlet__body">
-        <zxing-scanner *ngIf="scannerEnabled" #scanner (scanSuccess)="scanSuccessHandler($event)">
+        <zxing-scanner
+          *ngIf="scannerEnabled"
+          #scanner
+          (scanSuccess)="scanSuccessHandler($event)"
+        >
         </zxing-scanner>
         <button
           (click)="enableScanner()"
@@ -23,33 +27,40 @@
       </div>
     </div>
   </div>
-  <span>{{ indexdone}}</span>
+  <br />
+  <strong
+    >Index Done<span> &nbsp; {{ indexdone }}</span></strong
+  >
+  &nbsp;&nbsp;
   <button (click)="saveFile()">saveFile</button>
 
   <div class="col-12 col-lg-6">
-    <div class="
+    <div
+      class="
         kt-portlet kt-callout kt-callout--info kt-callout--diagonal-bg
         scannedInfo
-      ">
+      "
+    >
       <div class="kt-portlet__body">
         <div class="kt-callout__body">
           <div class="kt-callout__content">
-            <h3 class="kt-callout__title">Información sobre el folio</h3>
-            <h3 class="kt-callout__desc">
-              {{ information }}
-            </h3>
+            <br />
             <div>
-
+              <strong>load json as File</strong>&nbsp;
               <input id="preview" type="file" (change)="previewFile($event)" />
-              <span> file keys {{fileDatakeys}} </span>
-              <button  (click)="showMissingKeys()" style="margin-top:10px">Show Missing Keys</button>
             </div>
-            <input id="savezip" type="file" (change)="saveZip($event)" />
-            <div class="alert alert-primary fade show" role="alert" *ngFor="let item of transports; let i = index">
-              <div class="alert-icon"><i class="flaticon-truck"></i></div>
-
-
-
+            <br />
+            <div>
+              <button (click)="showMissingKeys()" style="margin-top:10px">
+                Show Missing Keys
+              </button>
+              &nbsp;&nbsp;
+              <strong> file keys {{ fileDatakeys }} </strong>
+            </div>
+            <br />
+            <div>
+              <strong>save json To zip</strong>&nbsp;
+              <input id="savezip" type="file" (change)="saveZip($event)" />
             </div>
           </div>
         </div>

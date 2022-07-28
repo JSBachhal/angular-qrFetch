@@ -52,13 +52,11 @@ export class AppComponent {
     const reader = new FileReader();
     reader.onload = (e: any) => {
       const data = JSON.parse(reader.result.toString());
-      // const data = reader.result.toString();
+      
       this.fileDatakeys = Object.keys(data).length;
-      // alert(this.fileDatakeys);
-      // console.log(data);
       this.data = data;
       this.indexdone = Object.keys(data).length;
-      // console.log(this.data);
+      
       this.createBuffer(data, this.getmaxKey(data));
     };
     reader.readAsBinaryString(event.target.files[0]);
@@ -105,12 +103,10 @@ export class AppComponent {
 
   createBuffer(data, maxkey) {
     const buffer = new ArrayBuffer(332352);
-    const view = new Int32Array(buffer);
-
     let arr = [];
     for (let i = 0; i <= maxkey; i++) {
       if (data[i]) {
-        // console.log(data[i]);
+        
         data[i.toString()].split(',').forEach((v) => {
           arr.push(parseFloat(v));
         });
