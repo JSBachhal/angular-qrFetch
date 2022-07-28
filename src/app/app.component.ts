@@ -21,7 +21,7 @@ export class AppComponent {
 
   public scanSuccessHandler($event: any) {
     const data = JSON.parse($event);
-    if (data && data.i>-1) {
+    if (data && data.i > -1) {
       if (this.data[data.i]) {
         return;
       }
@@ -41,15 +41,11 @@ export class AppComponent {
     const blob = new Blob([JSON.stringify(this.data)], { type: 'text/plain' });
     saveAs(blob, 'data.txt');
   }
-  
+
   saveZipFile(buffer) {
-    const blob = new Blob([buffer], 
-    { type: 'application/x-7z-compressed' });
+    const blob = new Blob([buffer], { type: 'application/x-7z-compressed' });
     saveAs(blob, 'data.7z');
   }
-
-
-  
 
   fileDatakeys = 0;
   previewFile(event) {
@@ -67,18 +63,21 @@ export class AppComponent {
     };
     reader.readAsBinaryString(event.target.files[0]);
   }
-  
+
   saveZip(event) {
     const reader = new FileReader();
     reader.onload = (e: any) => {
       const data = JSON.parse(reader.result.toString());
-      
-      let str = '' 
-      for(let v of data){
-        str += v.d;
+      console.log(data);
+      let str = '';
+      for (let v in Object.keys(data)) {
+        str += data[v];
       }
-      
+
+      // console.log(str);
+      // console.log(str.split(',').length);
       const buffer = new Uint8Array(str.split(',') as any);
+      console.log(buffer.length);
       this.saveZipFile(buffer);
     };
     reader.readAsText(event.target.files[0]);
