@@ -15,6 +15,8 @@ export class AppComponent {
   mimeSelected= 'application/x-7z-compressed'
   constructor(private cd: ChangeDetectorRef) {}
 
+
+  
   ngOnInit() {}
 
   data = {};
